@@ -1,0 +1,24 @@
+# fish
+fish/.config/fish/fishd.*
+fish/.config/fish/fish*_history
+
+# irssi
+irssi/.irssi/away.log
+irssi/.irssi/config
+irssi/.irssi/log
+
+# ncmpcpp
+ncmpcpp/.ncmpcpp/*.log
+
+# themer
+themer/.config/themer/*/*
+!themer/.config/themer/templates
+!themer/.config/themer/*/colors.yaml
+!themer/.config/themer/*/wallpaper.*
+# themer/.config/themer/current/**
+
+# vim
+vim/.vim/.netrwhist
+vim/.vim/bundle
+
+*__pycache__*

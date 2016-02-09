@@ -1,0 +1,52 @@
+*faceName: Source Code Pro For Powerline
+*faceSize: 10
+*font: xft:Source Code Pro For Powerline:pixelsize=10
+URxvt*.letterSpace: -2
+
+URxvt*.clipboard.copycmd:  xsel -ib
+URxvt*.clipboard.pastecmd: xsel -ob
+URxvt*.cursorColor: #2da05f
+URxvt*.intensityStyles: false
+URxvt*.depth: 32
+URxvt*.urgentOnBell: true
+
+URxvt*.scrollstyle: plain
+URxvt*.scrollColor: #826d57
+URxvt*.scrollBar_floating: true
+URxvt*.scrollBar_right: true
+URxvt*.internalBorder:
+
+URxvt*.perl-ext-common:  default,custom_url,selection-to-clipboard,reload-colors
+
+URxvt*.keysym.M-x: perl:reload-colors
+
+URxvt*.dynamicColors: on
+
+URxvt*.background: [70]#0e0e0e
+URxvt*.foreground: #ffffff
+! black
+URxvt*.color0: #201606
+URxvt*.color8: #0882bb
+! red
+URxvt*.color1: #a03086
+URxvt*.color9: #c8c891
+! green
+URxvt*.color2: #a0882d
+URxvt*.color10: #e0d319
+! yellow
+URxvt*.color3: #ab1676
+URxvt*.color11: #dfd7b6
+! blue
+URxvt*.color4: #1b4ba0
+URxvt*.color12: #c82532
+! magenta
+URxvt*.color5: #b3171d
+URxvt*.color13: #c8558e
+! cyan
+URxvt*.color6: #db8923
+URxvt*.color14: #c8c21b
+! white
+URxvt*.color7: #2da05f
+URxvt*.color15: #c85b90
+! underline when default
+URxvt*.colorUL: #2da05f

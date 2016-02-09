@@ -1,0 +1,13 @@
+#!/usr/bin/env perl
+
+sub on_user_command {
+    my ($self, $cmd) = @_;
+    my $output = `/home/s0lll0s/.urxvt/changecolor.sh`;
+    $self->cmd_parse($output);
+}
+
+sub on_focus_in {
+    my ($self, $cmd) = @_;
+    my $output = `/home/s0lll0s/.urxvt/changecolor.sh`;
+    $self->cmd_parse($output);
+}

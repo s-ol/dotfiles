@@ -1,0 +1,76 @@
+{
+  "segments": {
+    "left": [
+      {
+        "function": "powerline.segments.common.net.hostname"
+      },
+      {
+        "function": "powerline.segments.i3wm.mode",
+        "args": {
+          "names": {
+            "default": null,
+            "gaps": "gaps <+ - 0 =>",
+            "resize": "resize <left right up down>"
+          }
+        }
+      },
+      {
+        "type": "segment_list",
+        "function": "powerline.listers.i3wm.workspace_lister",
+        "include_modes": ["default"],
+        "segments": [
+          {
+            "function": "powerline.segments.i3wm.workspace",
+            "args": {
+              "strip": true
+            }
+          }
+        ]
+      },
+      {
+        "function": "powerline.segments.common.players.mpd",
+        "name": "player",
+        "args": {
+          "host": "127.0.0.1",
+          "port": 6600
+        }
+      }
+    ],
+    "right": [
+      {
+        "function": "powerline.segments.i3wm.workspace",
+        "args": {
+          "strip": true
+        }
+      },
+      {
+        "function": "powerline.segments.common.net.external_ip",
+        "include_modes": [
+          "gaps"
+        ]
+      },
+      {
+        "function": "powerline.segments.common.wthr.weather",
+        "priority": 50
+      },
+      {
+        "function": "powerline.segments.common.bat.battery",
+        "args": {
+          "gamify": true,
+          "steps": 6
+        }
+      },
+      {
+        "function": "powerline.segments.common.time.date",
+        "name": "time",
+        "args": {
+          "format": "%H:%M",
+          "istime": true
+        }
+      },
+      {
+        "function": "powerline.segments.common.time.date"
+      }
+    ]
+  }
+}

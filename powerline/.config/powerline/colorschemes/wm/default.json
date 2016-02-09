@@ -1,0 +1,9 @@
+{
+	"groups": {
+		"workspace":               {"fg": "_white0",      "bg": "_black0",  "attrs": []},
+		"w_visible":               {"fg": "_white0",      "bg": "_black1",  "attrs": []},
+		"w_focused":               {"fg": "_black0",      "bg": "_cyan1",   "attrs": []},
+		"w_urgent":                {"fg": "_black0",      "bg": "_yellow1", "attrs": []},
+		"mode":                    {"fg": "_black0",      "bg": "_yellow1", "attrs": []}
+	}
+}

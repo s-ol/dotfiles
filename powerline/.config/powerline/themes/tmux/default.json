@@ -1,0 +1,34 @@
+{
+	"segments": {
+		"right": [
+			{
+				"function": "powerline.segments.common.sys.uptime",
+				"priority": 5
+			},
+			{
+				"function": "powerline.segments.common.sys.system_load",
+				"priority": 50
+			},
+			{
+				"function": "powerline.segments.common.time.date",
+        "priority": 20
+			},
+			{
+				"function": "powerline.segments.common.time.date",
+				"name": "time",
+				"args": {
+					"format": "%H:%M",
+					"istime": true
+				}
+			},
+      {
+        "function": "powerline.segments.tmux.attached_clients",
+        "after": " att.",
+        "priority": 10
+      },
+			{
+				"function": "powerline.segments.common.net.hostname"
+			}
+		]
+	}
+}

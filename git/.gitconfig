@@ -1,0 +1,10 @@
+[user]
+	email = s0lll0s@blinkenshell.org
+	name = S0lll0s
+[push]
+	default = current
+[alias]
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  stash-push = "!f() { if (( $# > 0)); then branch=$(git branch | sed -n 's/^\\* //p'); git update-ref -m \"On ${branch}: $*\" refs/stash $(git stash create \"On ${branch}: $*\"); else hash=$(git stash create); msg=$(git log --no-walk --pretty=\"tformat:%-s\" $hash); git update-ref -m \"$msg\" refs/stash $hash; fi;}; f"
+[credential]
+	helper = /usr/share/git/credential/gnome-keyring/git-credential-gnome-keyring

@@ -1,0 +1,26 @@
+alt_black: '#c0824f'
+alt_blue: '#cd804f'
+alt_cyan: '#c84636'
+alt_green: '#fdf7a3'
+alt_magenta: '#d0ab7a'
+alt_red: '#c85439'
+alt_white: '#c85f3c'
+alt_yellow: '#e6794a'
+background: '#0e0e0e'
+black: '#201b13'
+blue: '#e0cc8b'
+cyan: '#e0c58d'
+font: -*-terminus-*-*-*-*-12-*-*-*-*-*-*-*
+fontName: Source Code Pro for Powerline
+fontSize: 10
+foreground: '#ffffff'
+green: '#ce533a'
+magenta: '#e0884f'
+primary: '#e0884f'
+red: '#c96c41'
+secondary: '#ce533a'
+special: '#e0b56f'
+tertiary: '#c96c41'
+transparency: 50
+white: '#e0a262'
+yellow: '#e0b56f'
