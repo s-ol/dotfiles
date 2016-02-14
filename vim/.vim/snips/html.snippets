@@ -9,7 +9,7 @@ snippet t "An HTML Tag" b
 </$1>
 endsnippet
 
-pre_expand "snip.buffer[snip.line] = ''; snip.cursor.set(snip.line, 4)"
+pre_expand "snip.buffer[snip.line] = ''; snip.cursor.set(snip.line, 0)"
 snippet sect "Comment Section mark" b
 <!--
 `!p snip.rv = calculate_spacing(t[1])`${1:${VISUAL:section}}

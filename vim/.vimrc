@@ -1,3 +1,8 @@
+"                                                                       plugins
+"                                                           ┏━┓╻  ╻ ╻┏━╸╻┏┓╻┏━┓
+"                                                           ┣━┛┃  ┃ ┃┃╺┓┃┃┗┫┗━┓
+"                                                           ╹  ┗━╸┗━┛┗━┛╹╹ ╹┗━┛
+
 set nocompatible
 filetype off
 
@@ -16,6 +21,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'wellle/targets.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'leafo/moonscript-vim'
+Plugin 'kshenoy/vim-signature'
 
 Plugin 'airblade/vim-gitgutter'
 let g:gitgutter_realtime = 1
@@ -39,20 +45,16 @@ vmap D       <Plug>SchleppDup
 call vundle#end()
 filetype plugin indent on
 
+"                                                                       general
+"                                                         ┏━╸┏━╸┏┓╻┏━╸┏━┓┏━┓╻  
+"                                                         ┃╺┓┣╸ ┃┗┫┣╸ ┣┳┛┣━┫┃  
+"                                                         ┗━┛┗━╸╹ ╹┗━╸╹┗╸╹ ╹┗━╸
+
 " map leader to ,
 let mapleader=","
 
 syn on            " syntax highlighting
-set rnu nu        " line nos
-set showmatch     " show matching brackets
-set shortmess+=I  " no startup msg
-
-"set nowrap       " dont wrap lines
-"set cursorcolumn " hilight cursor
-
-colorscheme noctu
-set background=dark
-set listchars=trail:·
+" set hidden        " hide buffers
 
 " fix s:last_* errors
 set shell=/bin/bash
@@ -73,14 +75,35 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 
+"                                                                        visual
+"                                                              ╻ ╻╻┏━┓╻ ╻┏━┓╻  
+"                                                              ┃┏┛┃┗━┓┃ ┃┣━┫┃  
+"                                                              ┗┛ ╹┗━┛┗━┛╹ ╹┗━╸
+
+" colorscheme
+colorscheme noctu
+set background=dark
+
 " hide everything powerline takes care of
 set laststatus=2
 set showtabline=2
 set noshowmode
 
-set mouse=a
-set hidden
-set hlsearch
+"set nowrap       " dont wrap lines
+set mouse=a       " mouse input
+set rnu nu        " line nos
+set showmatch     " show matching brackets
+set shortmess+=I  " no startup msg
+set hlsearch incsearch " hilight search
+
+
+"                                                                      bindings
+"                                                          ┏┓ ╻┏┓╻╺┳┓╻┏┓╻┏━╸┏━┓
+"                                                          ┣┻┓┃┃┗┫ ┃┃┃┃┗┫┃╺┓┗━┓
+"                                                          ┗━┛╹╹ ╹╺┻┛╹╹ ╹┗━┛┗━┛
+
+" disable hlsearch's matches
+nnoremap <silent> <DEL> :nohl<CR>
 
 " quicker buffer switching
 nnoremap <C-N> :bnext<CR>
@@ -91,6 +114,14 @@ nnoremap <Up> <Nop>
 nnoremap <Down> <Nop>
 nnoremap <Left> <Nop>
 nnoremap <Right> <Nop>
+
+" remap @ in visual mode to apply macro to each line
+xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
+
+function! ExecuteMacroOverVisualRange()
+  echo "@".getcmdline()
+  execute ":'<,'>normal @".nr2char(getchar())
+endfunction
 
 " put split windows right or below of current one
 set splitbelow

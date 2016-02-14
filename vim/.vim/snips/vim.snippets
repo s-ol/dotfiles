@@ -1,0 +1,13 @@
+global !p
+from utils import *
+endglobal
+
+pre_expand "snip.buffer[snip.line] = ''; snip.cursor.set(snip.line, 4)"
+snippet sect "Comment Section mark" b
+"`!p snip.rv = calculate_spacing(t[1], -2)`${1:${VISUAL:section}}
+`!p
+figlet = run_figlet(t[1]).split('\n')
+n = calculate_spacing(figlet[0], -2)
+snip.rv = '\n'.join(('"' + n + l for l in figlet))`
+$0
+endsnippet

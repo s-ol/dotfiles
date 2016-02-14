@@ -1,11 +1,12 @@
 {
+  "default_module": "powerline.segments.i3wm",
   "segments": {
     "left": [
       {
         "function": "powerline.segments.common.net.hostname"
       },
       {
-        "function": "powerline.segments.i3wm.mode",
+        "function": "mode",
         "args": {
           "names": {
             "default": null,
@@ -20,7 +21,7 @@
         "include_modes": ["default"],
         "segments": [
           {
-            "function": "powerline.segments.i3wm.workspace",
+            "function": "workspace",
             "args": {
               "strip": true
             }
@@ -38,7 +39,7 @@
     ],
     "right": [
       {
-        "function": "powerline.segments.i3wm.workspace",
+        "function": "workspace",
         "args": {
           "strip": true
         }
