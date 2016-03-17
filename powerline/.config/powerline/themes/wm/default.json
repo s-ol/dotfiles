@@ -39,16 +39,9 @@
     ],
     "right": [
       {
-        "function": "workspace",
-        "args": {
-          "strip": true
-        }
-      },
-      {
-        "function": "powerline.segments.common.net.external_ip",
-        "include_modes": [
-          "gaps"
-        ]
+        "function": "scratchpad",
+        "draw_inner_divider": true,
+        "include_modes": ["default"]
       },
       {
         "function": "powerline.segments.common.wthr.weather",

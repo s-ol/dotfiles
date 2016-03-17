@@ -1,6 +1,6 @@
 # fish
 fish/.config/fish/fishd.*
-fish/.config/fish/fish*_history
+fish/.config/fish/fish*_history*
 
 # irssi
 irssi/.irssi/away.log

@@ -1,11 +1,12 @@
 {
+  "default_module": "powerline.segments.i3wm",
   "segments": {
     "left": [
       {
         "function": "powerline.segments.common.net.hostname"
       },
       {
-        "function": "powerline.segments.i3wm.mode",
+        "function": "mode",
         "args": {
           "names": {
             "default": null,
@@ -15,16 +16,16 @@
         }
       },
       {
-        "type": "string",
-        "contents": "rekt",
-        "highlight_groups": ["hostname"]
-      },
-      {
-        "function": "powerline.segments.i3wm.workspaces",
-        "args": {
-          "strip": 3
-        },
-        "draw_inner_divider": true
+        "type": "segment_list",
+        "function": "powerline.listers.i3wm.workspace_lister",
+        "segments": [
+          {
+            "function": "workspace",
+            "args": {
+              "strip": true
+            }
+          }
+        ]
       },
       {
         "function": "powerline.segments.common.players.mpd",
@@ -37,10 +38,11 @@
     ],
     "right": [
       {
-        "function": "powerline.segments.common.net.external_ip",
-        "include_modes": [
-          "gaps"
-        ]
+        "function": "scratchpad",
+        "draw_inner_divider": true
+      },
+      {
+        "function": "powerline.segments.common.net.external_ip"
       },
       {
         "function": "powerline.segments.common.wthr.weather",
@@ -50,7 +52,7 @@
         "function": "powerline.segments.common.bat.battery",
         "args": {
           "gamify": true,
-          "steps": 5
+          "steps": 6
         }
       },
       {

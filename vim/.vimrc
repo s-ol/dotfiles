@@ -1,8 +1,11 @@
+" map leader to ,
+let mapleader=","
+let maplocalleader="\<Tab>"
+
 "                                                                       plugins
 "                                                           ┏━┓╻  ╻ ╻┏━╸╻┏┓╻┏━┓
 "                                                           ┣━┛┃  ┃ ┃┃╺┓┃┃┗┫┗━┓
 "                                                           ╹  ┗━╸┗━┛┗━┛╹╹ ╹┗━┛
-
 set nocompatible
 filetype off
 
@@ -15,13 +18,19 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'tpope/vim-repeat'
-Plugin 'unblevable/quick-scope'
 Plugin 'noahfrederick/vim-noctu'
 Plugin 'tpope/vim-fugitive'
 Plugin 'wellle/targets.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'leafo/moonscript-vim'
 Plugin 'kshenoy/vim-signature'
+" Plugin 'vim-scripts/Smart-Tabs'
+
+Plugin 'unblevable/quick-scope'
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
+Plugin 'munshkr/vim-tidal'
+let g:tidal_no_mappings = 1
 
 Plugin 'airblade/vim-gitgutter'
 let g:gitgutter_realtime = 1
@@ -42,6 +51,20 @@ vmap <left>  <Plug>SchleppLeft
 vmap <right> <Plug>SchleppRight
 vmap D       <Plug>SchleppDup
 
+Plugin 'majutsushi/tagbar'
+nmap <Leader>t :TagbarToggle<CR>
+let g:tagbar_type_moon = {
+    \ 'ctagstype' : 'moonscript',
+    \ 'kinds'     : [
+        \ 'v:variables',
+        \ 'f:functions',
+        \ 'c:classes',
+        \ 'm:methods',
+        \ 's:static properties',
+        \ 'p:properties',
+    \ ]
+\ }
+
 call vundle#end()
 filetype plugin indent on
 
@@ -50,11 +73,10 @@ filetype plugin indent on
 "                                                         ┃╺┓┣╸ ┃┗┫┣╸ ┣┳┛┣━┫┃  
 "                                                         ┗━┛┗━╸╹ ╹┗━╸╹┗╸╹ ╹┗━╸
 
-" map leader to ,
-let mapleader=","
-
 syn on            " syntax highlighting
-" set hidden        " hide buffers
+set hidden        " allow leaving buffers
+
+set scrolloff=8
 
 " fix s:last_* errors
 set shell=/bin/bash
@@ -96,6 +118,14 @@ set showmatch     " show matching brackets
 set shortmess+=I  " no startup msg
 set hlsearch incsearch " hilight search
 
+" put split windows right or below of current one
+set splitbelow
+set splitright
+
+" show 80th col
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%81v', 100)
+
 
 "                                                                      bindings
 "                                                          ┏┓ ╻┏┓╻╺┳┓╻┏┓╻┏━╸┏━┓
@@ -105,15 +135,35 @@ set hlsearch incsearch " hilight search
 " disable hlsearch's matches
 nnoremap <silent> <DEL> :nohl<CR>
 
+" show shell
+nnoremap <silent> <Leader><Space> :!<CR>
+
+" switch buffers quickly
+nnoremap <Leader><Tab> :bn<CR>
+nnoremap <Leader><S-Tab> :bp<CR>
+nnoremap <Leader>q :b#\|bd#<CR>
+
+" toggle paste
+nnoremap <silent> <Leader>p :set paste!<CR>
+
 " quicker buffer switching
 nnoremap <C-N> :bnext<CR>
 nnoremap <C-P> :bprev<CR>
+
+" move down wrapped lines
+noremap <expr> j (v:count? 'j' : 'gj')
+noremap <expr> k (v:count? 'k' : 'gk')
 
 " disable arrows in command mode
 nnoremap <Up> <Nop>
 nnoremap <Down> <Nop>
 nnoremap <Left> <Nop>
 nnoremap <Right> <Nop>
+
+function! CommandCabbr(abbreviation, expansion)
+  execute 'cabbr ' . a:abbreviation . ' <c-r>=getcmdpos() == 1 && getcmdtype() == ":" ? "' . a:expansion . '" : "' . a:abbreviation . '"<CR>'
+endfunction
+call CommandCabbr("tabe", "e")
 
 " remap @ in visual mode to apply macro to each line
 xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
@@ -123,17 +173,9 @@ function! ExecuteMacroOverVisualRange()
   execute ":'<,'>normal @".nr2char(getchar())
 endfunction
 
-" put split windows right or below of current one
-set splitbelow
-set splitright
-
-" show 80th col
-highlight ColorColumn ctermbg=magenta
-call matchadd('ColorColumn', '\%81v', 100)
-
 " blink line containing match
-nnoremap <silent> n   n:call HLNext(0.3)<cr>
-nnoremap <silent> N   N:call HLNext(0.3)<cr>
+" nnoremap <silent> n   n:call HLNext(0.3)<cr>
+" nnoremap <silent> N   N:call HLNext(0.3)<cr>
 
 function! HLNext (blinktime)
   set invcursorline
@@ -146,3 +188,33 @@ endfunction
 " show special chars
 exec "set listchars=tab:\u25B6\u2015,trail:\uB7,nbsp:~"
 set list
+
+" <Leader>r and <Leader>R to run in tmux
+function! s:PromptCommand()
+  echohl String | let s:user_command = input("run: ", s:user_command) | echohl None
+endfunction
+
+function! RunTmuxCommand(redefine)
+  if !exists("s:user_command") || a:redefine == 1
+     call s:PromptCommand()
+  endif
+  let command = "tmux send " . shellescape(s:user_command) . " Enter"
+  return system(command)
+endfunction
+
+function! RunShell(redefine)
+  if !exists("s:user_command") || a:redefine == 1
+    call s:PromptCommand()
+  endif
+  exec "!" . s:user_command
+endfunction
+
+command! RunTmux  call RunTmuxCommand(0)
+command! RunNTmux call RunTmuxCommand(1)
+command! RunShell call RunShell(0)
+command! RuNShell call RunShell(1)
+
+nmap <Leader>r :RunTmux<CR>
+nmap <Leader>R :RunNTmux<CR>
+nmap <Leader>e :RunShell<CR>
+nmap <Leader>E :RuNShell<CR>
