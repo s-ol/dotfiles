@@ -191,6 +191,9 @@ set list
 
 " <Leader>r and <Leader>R to run in tmux
 function! s:PromptCommand()
+  if !exists("s:user_command")
+    let s:user_command = ""
+  endif
   echohl String | let s:user_command = input("run: ", s:user_command) | echohl None
 endfunction
 
