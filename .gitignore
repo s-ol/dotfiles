@@ -12,9 +12,9 @@ ncmpcpp/.ncmpcpp/*.log
 
 # themer
 themer/.config/themer/*/*
-!themer/.config/themer/templates
 !themer/.config/themer/*/colors.yaml
 !themer/.config/themer/*/wallpaper.*
+!themer/.config/themer/templates/**
 # themer/.config/themer/current/**
 
 # vim

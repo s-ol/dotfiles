@@ -1,0 +1,31 @@
+variables:
+  primary: magenta
+  secondary: green
+  tertiary: red
+  special: yellow
+  # transparency: 50
+  # fontName: Source Code Pro for Powerline
+  fontName: Sauce Code Powerline for Powerline
+  fontSize: 10
+  font: "-*-terminus-*-*-*-*-12-*-*-*-*-*-*-*"
+plugins:
+  parsers:
+    - themer.parsers.KmeansColorParser
+    # - themer.parsers.WallhavenColorParser
+    - themer.parsers.CachedColorParser
+    - themer.parsers.SweylaColorParser
+    - themer.parsers.vim.VimColorParser
+    - themer.ColorParser
+  activators:
+    # - i3focuser.I3Focuser
+    - xrandrfix.XrandrFix
+    - themer.activators.wallfix.WallfixActivator
+    - themer.activators.i3.I3Activator
+files:
+  Xdefaults.tpl: Xdefaults
+  index.tpl: index.html
+  i3.tpl: i3.conf
+  fish.tpl: config.fish
+  powerline.tpl: colors.json
+  bash.tpl: reload.sh
+  dmenuconf.tpl: dmenuconf.sh
