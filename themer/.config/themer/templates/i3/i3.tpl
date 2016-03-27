@@ -60,20 +60,16 @@ mode "gaps" {
 
 font pango:DejaVu Sans Mono 8
 
-exec --no-startup-id xrandr --setprovideroutputsource 1 0
-exec_always --no-startup-id xrandr --output DVI-I-1 --auto --pos 0x0 --output LVDS1 --auto --pos 3840x360 --output HDMI1 --auto --pos 1920x0 --primary
+exec --no-startup-id /usr/gnome-settings-daemon/gnome-settings-daemon
+exec --no-startup-id urxvtd -q -f -o
+exec_always --no-startup-id hsetroot -tile ~/.config/themer/current/resized.png
 
 exec_always --no-startup-id pkill -f 'python .*powerline-lemonbar\.py'
 exec_always --no-startup-id sleep 1 && ~/.config/i3/powerline-lemonbar.py --i3 --height 16 -- -f "{{ fontName }}-9" -f Icon-9
-
-# exec_always --no-startup-id feh --bg-tile ~/.wallpaper.png
-exec_always --no-startup-id hsetroot -tile ~/.config/themer/current/resized.png
 exec_always --no-startup-id killall compton; compton --config /dev/null # -fci 0.9 -D 7
-exec --no-startup-id urxvtd -q -f -o
 
 # exec_always --no-startup-id xset m 10/10 9999 r rate 200 27
 # exec_always --no-startup-id setxkbmap de nodeadkeys -option compose:caps
-# exec --no-startup-id sleep 20; systemctl --user start mopidy
 
 floating_modifier $mod
 

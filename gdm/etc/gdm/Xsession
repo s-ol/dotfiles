@@ -106,8 +106,7 @@ if [ -f "$userresources" ]; then
     xrdb -nocpp -merge "$userresources"
 fi
 
-
-if [ -f "$userresourcedir" ]; then
+if [ -d "$userresourcedir" ]; then
     xrdb -nocpp -merge $userresourcedir/*
 fi
 

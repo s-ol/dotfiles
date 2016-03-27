@@ -17,7 +17,7 @@ set fish_color_valid_path     "{{ green }}"
 set fish_color_cwd            "{{ alt_black }}"
 set fish_color_error          "{{ alt_red }}"
 
-gnome-keyring-daemon | sed "s|^\(\w*\)=\(.*\)|set -gx \1 \2|" | source
+gnome-keyring-daemon -s -c=ssh,secrets,pkcs11 | sed "s|^\(\w*\)=\(.*\)|set -gx \1 \2|" | source
 
 set -gx WECHALLUSER S0lll0s
 set -gx WECHALLTOKEN
