@@ -81,7 +81,7 @@ bindsym $mod+Shift+q kill
 
 bindsym $mod+Return exec urxvtc
 bindsym $mod+Shift+Return exec urxvtc -name float -geometry 200x45
-bindsym $mod+p exec google-chrome-stable
+bindsym $mod+p exec chromium
 bindsym $mod+m exec urxvtc -name float -geometry 200x45 -e ncmpcpp
 bindsym $mod+o exec urxvtc -name float -geometry 200x45 -depth 0 -e ranger
 bindsym $mod+d exec --no-startup-id dmenu_run -p "Launch:" $(~/.config/i3/dmenuconf)

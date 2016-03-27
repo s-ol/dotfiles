@@ -1,9 +1,9 @@
 powerline-daemon -q
-set -gx POWERLINE /usr/lib/python3.5/site-packages/powerline_status-(pip freeze 2>/dev/null | grep powerline | cut -c 20- | tr - _)-py3.5.egg/
-set fish_function_path $fish_function_path $POWERLINE"powerline/bindings/fish"
+set -gx POWERLINE /usr/lib/python3.5/site-packages/powerline/
+set fish_function_path $fish_function_path $POWERLINE"bindings/fish"
 powerline-setup
 
-thefuck --alias | .
+#thefuck --alias | .
 
 set -gx TERM xterm-256color
 set -gx EDITOR vim
@@ -17,21 +17,7 @@ set fish_color_valid_path     "{{ green }}"
 set fish_color_cwd            "{{ alt_black }}"
 set fish_color_error          "{{ alt_red }}"
 
-if status --is-interactive
-  eval (keychain --agents ssh --eval -Q --quiet ~/.ssh/id_rsa ~/.ssh/id_rsa-aur | sed "s/ and//g")
-else
-  eval (keychain --agents ssh --eval -Q --quiet --noask ~/.ssh/id_rsa ~/.ssh/id_rsa-aur | sed "s/ and//g")
-end
-set -gx SSH_AUTH_SOCK $SSH_AUTH_SOCK[1]
-# gnome-keyring-daemon | sed "s|^\(\w*\)=\(.*\)|set \1 \2|" | source 
-
-#set -l envfile "$HOME/.cache/gnome-keyring.env"
-#if not pgrep -f 'gnome-keyring-daemon.*components.*gpg,ssh,secrets' > /dev/null
-#  killall gnome-keyring-daemon
-#  gnome-keyring-daemon --start --components=gpg,ssh,secrets > $envfile
-#end
-#set var_set (cat "$envfile" |  sed -e 's/^\(.*\)/set -x \\1/' -e 's/=/ /' -e 's/\(.*\)$/\1;/')
-#eval $var_set
+gnome-keyring-daemon | sed "s|^\(\w*\)=\(.*\)|set -gx \1 \2|" | source
 
 set -gx WECHALLUSER S0lll0s
 set -gx WECHALLTOKEN
@@ -39,7 +25,7 @@ set -gx WECHALLTOKEN
 function fish_greeting
   command echo ------
   set_color "{{ alt_red }}"
-  fortune -a 4% clockwork all
+  fortune
   set_color normal
   command echo ------
   if [ -f ~/.note ]

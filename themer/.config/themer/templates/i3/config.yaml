@@ -19,10 +19,10 @@ plugins:
   activators:
     # - i3focuser.I3Focuser
     - xrandrfix.XrandrFix
-    - themer.activators.wallfix.WallfixActivator
+    # - themer.activators.wallfix.WallfixActivator
     - themer.activators.i3.I3Activator
 files:
-  Xdefaults.tpl: Xdefaults
+  urxvt.tpl: urxvt.Xresources
   index.tpl: index.html
   i3.tpl: i3.conf
   fish.tpl: config.fish
