@@ -66,7 +66,7 @@ exec_always --no-startup-id hsetroot -tile ~/.config/themer/current/resized.png
 
 exec_always --no-startup-id pkill -f 'python .*powerline-lemonbar\.py'
 exec_always --no-startup-id sleep 1 && ~/.config/i3/powerline-lemonbar.py --i3 --height 16 -- -f "{{ fontName }}-9" -f Icon-9
-exec_always --no-startup-id killall compton; compton --config /dev/null # -fci 0.9 -D 7
+exec_always --no-startup-id killall compton; compton
 
 # exec_always --no-startup-id xset m 10/10 9999 r rate 200 27
 # exec_always --no-startup-id setxkbmap de nodeadkeys -option compose:caps

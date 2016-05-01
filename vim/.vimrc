@@ -22,10 +22,12 @@ Plugin 'tpope/vim-repeat'
 Plugin 'noahfrederick/vim-noctu'
 Plugin 'tpope/vim-fugitive'
 Plugin 'wellle/targets.vim'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'leafo/moonscript-vim'
 Plugin 'kshenoy/vim-signature'
 " Plugin 'vim-scripts/Smart-Tabs'
+
+let g:ycm_server_python_interpreter='/usr/bin/python3'
+Plugin 'Valloric/YouCompleteMe'
 
 Plugin 'unblevable/quick-scope'
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
@@ -190,7 +192,7 @@ endfunction
 exec "set listchars=tab:\u25B6\u2015,trail:\uB7,nbsp:~"
 set list
 
-" <Leader>r and <Leader>R to run in tmux
+" <Leader>e and <Leader>r to run in vim shell and tmux
 function! s:PromptCommand()
   if !exists("s:user_command")
     let s:user_command = ""
@@ -214,11 +216,11 @@ function! RunShell(redefine)
 endfunction
 
 command! RunTmux  call RunTmuxCommand(0)
-command! RunNTmux call RunTmuxCommand(1)
+command! RuNTmux  call RunTmuxCommand(1)
 command! RunShell call RunShell(0)
 command! RuNShell call RunShell(1)
 
 nmap <Leader>r :RunTmux<CR>
-nmap <Leader>R :RunNTmux<CR>
+nmap <Leader>R :RuNTmux<CR>
 nmap <Leader>e :RunShell<CR>
 nmap <Leader>E :RuNShell<CR>
