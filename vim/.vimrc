@@ -26,35 +26,51 @@ Plugin 'leafo/moonscript-vim'
 Plugin 'kshenoy/vim-signature'
 " Plugin 'vim-scripts/Smart-Tabs'
 
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+" Plugin 'scrooloose/syntastic'
+
 let g:ycm_server_python_interpreter='/usr/bin/python3'
 Plugin 'Valloric/YouCompleteMe'
 
-Plugin 'unblevable/quick-scope'
+let g:ale_linters = {
+\ 'javascript': ['eslint'],
+\ 'lua': ['luacheck'],
+\}
+Plugin 'w0rp/ale'
+
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+Plugin 'unblevable/quick-scope'
 
-Plugin 'munshkr/vim-tidal'
 let g:tidal_no_mappings = 1
+Plugin 'munshkr/vim-tidal'
 
-Plugin 'airblade/vim-gitgutter'
 let g:gitgutter_realtime = 1
 let g:gitgutter_eager = 1
+Plugin 'airblade/vim-gitgutter'
 
-Plugin 'SirVer/ultisnips'
 let g:UltiSnipsExpandTrigger="<c-l>"
 let g:UltiSnipsJumpForwardTrigger="<c-l>"
 let g:UltiSnipsJumpBackwardTrigger="<c-h>"
 let g:UltiSnipsSnippetsDir="~/.vim/snips"
 let g:UltiSnipsSnippetDirectories=["snips"]
 let g:UltiSnipsEditSplit="vertical"
+Plugin 'SirVer/ultisnips'
 
-Plugin 'zirrostig/vim-schlepp'
 vmap <up>    <Plug>SchleppUp
 vmap <down>  <Plug>SchleppDown
 vmap <left>  <Plug>SchleppLeft
 vmap <right> <Plug>SchleppRight
 vmap D       <Plug>SchleppDup
+Plugin 'zirrostig/vim-schlepp'
 
-Plugin 'majutsushi/tagbar'
 nmap <Leader>t :TagbarToggle<CR>
 let g:tagbar_type_moon = {
     \ 'ctagstype' : 'moonscript',
@@ -67,6 +83,7 @@ let g:tagbar_type_moon = {
         \ 'p:properties',
     \ ]
 \ }
+Plugin 'majutsushi/tagbar'
 
 call vundle#end()
 filetype plugin indent on
@@ -92,7 +109,7 @@ set noswapfile " fuck these
 " wild menu
 set wildmode=longest,list,full
 set wildmenu
-set wildignorecase
+set nowildignorecase
 
 " default indent settings
 set expandtab
