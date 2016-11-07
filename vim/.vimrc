@@ -28,6 +28,11 @@ Plugin 'davisdude/vim-love-docs'
 Plugin 'w0rp/ale'
 " Plugin 'vim-scripts/Smart-Tabs'
 
+"nmap <Leader>e :MakeJob<CR>
+nmap <Leader>e :make<CR>
+nmap <Leader>E :cwindow<CR>
+Plugin 'djmoch/vim-makejob'
+
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -127,12 +132,13 @@ set laststatus=2
 set showtabline=2
 set noshowmode
 
-"set nowrap       " dont wrap lines
-set mouse=a       " mouse input
-set rnu nu        " line nos
-set showmatch     " show matching brackets
-set shortmess+=I  " no startup msg
-set hlsearch incsearch " hilight search
+"set nowrap             " dont wrap lines
+set mouse=a             " mouse input
+set showmatch           " show matching brackets
+set shortmess+=I        " no startup msg
+set number
+set relativenumber
+set hlsearch incsearch
 
 " put split windows right or below of current one
 set splitbelow
@@ -141,6 +147,12 @@ set splitright
 " show 80th col
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%81v', 100)
+
+augroup quickfix
+au!
+autocmd QuickFixCmdPost [^l]* nested cwindow | redraw!
+autocmd QuickFixCmdPost    l* nested lwindow | redraw!
+augroup END
 
 
 "                                                                      bindings
@@ -176,17 +188,18 @@ nnoremap <Down> <Nop>
 nnoremap <Left> <Nop>
 nnoremap <Right> <Nop>
 
+" map :tabe to :e (fck tabs)
 function! CommandCabbr(abbreviation, expansion)
   execute 'cabbr ' . a:abbreviation . ' <c-r>=getcmdpos() == 1 && getcmdtype() == ":" ? "' . a:expansion . '" : "' . a:abbreviation . '"<CR>'
 endfunction
-call CommandCabbr("tabe", "e")
+call CommandCabbr('tabe', 'e')
 
 " remap @ in visual mode to apply macro to each line
 xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
 
 function! ExecuteMacroOverVisualRange()
-  echo "@".getcmdline()
-  execute ":'<,'>normal @".nr2char(getchar())
+  echo '@'.getcmdline()
+  execute ':"<,">normal @'.nr2char(getchar())
 endfunction
 
 " blink line containing match
@@ -204,36 +217,3 @@ endfunction
 " show special chars
 exec "set listchars=tab:\u25B6\u2015,trail:\uB7,nbsp:~"
 set list
-
-" <Leader>e and <Leader>r to run in vim shell and tmux
-function! s:PromptCommand()
-  if !exists("s:user_command")
-    let s:user_command = ""
-  endif
-  echohl String | let s:user_command = input("run: ", s:user_command) | echohl None
-endfunction
-
-function! RunTmuxCommand(redefine)
-  if !exists("s:user_command") || a:redefine == 1
-     call s:PromptCommand()
-  endif
-  let command = "tmux send " . shellescape(s:user_command) . " Enter"
-  return system(command)
-endfunction
-
-function! RunShell(redefine)
-  if !exists("s:user_command") || a:redefine == 1
-    call s:PromptCommand()
-  endif
-  exec "!" . s:user_command
-endfunction
-
-command! RunTmux  call RunTmuxCommand(0)
-command! RuNTmux  call RunTmuxCommand(1)
-command! RunShell call RunShell(0)
-command! RuNShell call RunShell(1)
-
-nmap <Leader>r :RunTmux<CR>
-nmap <Leader>R :RuNTmux<CR>
-nmap <Leader>e :RunShell<CR>
-nmap <Leader>E :RuNShell<CR>
