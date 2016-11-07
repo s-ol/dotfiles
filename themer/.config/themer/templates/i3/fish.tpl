@@ -5,10 +5,10 @@ powerline-setup
 
 #thefuck --alias | .
 
-set -gx TERM xterm-256color
+#set -gx TERM xterm-256color
 set -gx EDITOR vim
 set -gx PAGER less
-set -gx PATH ~/.bin $PATH
+#set -gx PATH ~/.bin $PATH
 
 set fish_color_autosuggestion "{{ alt_blue }}"
 set fish_color_comment        "{{ alt_green }}"
