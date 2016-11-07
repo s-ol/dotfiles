@@ -24,10 +24,12 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'wellle/targets.vim'
 Plugin 'leafo/moonscript-vim'
 Plugin 'kshenoy/vim-signature'
+Plugin 'davisdude/vim-love-docs'
+Plugin 's-ol/ale'
 " Plugin 'vim-scripts/Smart-Tabs'
 
 let g:ycm_server_python_interpreter='/usr/bin/python3'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 
 Plugin 'unblevable/quick-scope'
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
@@ -92,7 +94,7 @@ set noswapfile " fuck these
 " wild menu
 set wildmode=longest,list,full
 set wildmenu
-set wildignorecase
+set nowildignorecase
 
 " default indent settings
 set expandtab
