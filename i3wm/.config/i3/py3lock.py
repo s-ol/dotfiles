@@ -3,8 +3,8 @@
 # vim:ts=2:sw=2:expandtab
 
 import os
-import xcb
-from xcb.xproto import *
+import xcffib
+from xcffib.xproto import *
 from PIL import Image
 
 XCB_MAP_STATE_VIEWABLE = 2
@@ -15,7 +15,7 @@ def screenshot():
 def xcb_fetch_windows():
   """ Returns an array of rects of currently visible windows. """
 
-  x = xcb.connect()
+  x = xcffib.connect()
   root = x.get_setup().roots[0].root
 
   rects = []
@@ -36,7 +36,7 @@ def obscure_image(image):
   size = image.size
   pixel_size = 9
 
-  image = image.resize((size[0] / pixel_size, size[1] / pixel_size), Image.NEAREST)
+  image = image.resize((size[0] // pixel_size, size[1] // pixel_size), Image.NEAREST)
   image = image.resize((size[0], size[1]), Image.NEAREST)
 
   return image
