@@ -38,7 +38,7 @@ let g:syntastic_check_on_wq = 0
 " Plugin 'scrooloose/syntastic'
 
 let g:ycm_server_python_interpreter='/usr/bin/python3'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 
 let g:ale_linters = {
 \ 'javascript': ['eslint'],
