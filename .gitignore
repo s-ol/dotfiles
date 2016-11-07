@@ -6,6 +6,7 @@ fish/.config/fish/fish*_history*
 irssi/.irssi/away.log
 irssi/.irssi/config
 irssi/.irssi/log
+irssi/.irssi/otr
 
 # ncmpcpp
 ncmpcpp/.ncmpcpp/*.log
