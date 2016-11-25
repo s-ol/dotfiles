@@ -28,8 +28,7 @@ Plugin 'davisdude/vim-love-docs'
 Plugin 'w0rp/ale'
 " Plugin 'vim-scripts/Smart-Tabs'
 
-"nmap <Leader>e :MakeJob<CR>
-nmap <Leader>e :make<CR>
+nmap <Leader>e :MakeJob<CR>
 nmap <Leader>E :cwindow<CR>
 Plugin 'djmoch/vim-makejob'
 
@@ -168,16 +167,14 @@ nnoremap <silent> <DEL> :nohl<CR>
 nnoremap <silent> <Leader><Space> :!<CR>
 
 " switch buffers quickly
-nnoremap <Leader><Tab> :bn<CR>
-nnoremap <Leader><S-Tab> :bp<CR>
+nnoremap <Leader><Tab> :b#<CR>
+nnoremap <Leader><S-Tab> :ls<CR>:b<space>
 nnoremap <Leader>q :b#\|bd#<CR>
+nnoremap <C-N> :bnext<CR>
+nnoremap <C-P> :bprev<CR>
 
 " toggle paste
 nnoremap <silent> <Leader>p :set paste!<CR>
-
-" quicker buffer switching
-nnoremap <C-N> :bnext<CR>
-nnoremap <C-P> :bprev<CR>
 
 " move down wrapped lines
 noremap <expr> j (v:count? 'j' : 'gj')
