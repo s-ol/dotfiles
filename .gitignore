@@ -20,6 +20,6 @@ themer/.config/themer/*/*
 
 # vim
 vim/.vim/.netrwhist
-vim/.vim/bundle
+vim/.vim/plugged
 
 *__pycache__*

@@ -14,23 +14,21 @@ python3 from powerline.vim import setup as powerline_setup
 python3 powerline_setup()
 python3 del powerline_setup
 
-" load vundle
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
-Plugin 'tpope/vim-repeat'
-Plugin 'noahfrederick/vim-noctu'
-Plugin 'tpope/vim-fugitive'
-Plugin 'wellle/targets.vim'
-Plugin 'leafo/moonscript-vim'
-Plugin 'kshenoy/vim-signature'
-Plugin 'davisdude/vim-love-docs'
-Plugin 'w0rp/ale'
-" Plugin 'vim-scripts/Smart-Tabs'
+Plug 'tpope/vim-repeat'
+Plug 'noahfrederick/vim-noctu'
+Plug 'tpope/vim-fugitive'
+Plug 'wellle/targets.vim'
+Plug 'leafo/moonscript-vim'
+Plug 'kshenoy/vim-signature'
+Plug 'davisdude/vim-love-docs'
+Plug 'w0rp/ale'
+" Plug 'vim-scripts/Smart-Tabs'
 
 nmap <Leader>e :MakeJob<CR>
 nmap <Leader>E :cwindow<CR>
-Plugin 'djmoch/vim-makejob'
+Plug 'djmoch/vim-makejob'
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -41,20 +39,20 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-" Plugin 'scrooloose/syntastic'
+" Plug 'scrooloose/syntastic'
 
 let g:ycm_server_python_interpreter='/usr/bin/python3'
-"Plugin 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
 
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-Plugin 'unblevable/quick-scope'
+Plug 'unblevable/quick-scope'
 
 let g:tidal_no_mappings = 1
-Plugin 'munshkr/vim-tidal'
+Plug 'munshkr/vim-tidal'
 
 let g:gitgutter_realtime = 1
 let g:gitgutter_eager = 1
-Plugin 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 
 let g:UltiSnipsExpandTrigger="<c-l>"
 let g:UltiSnipsJumpForwardTrigger="<c-l>"
@@ -62,14 +60,14 @@ let g:UltiSnipsJumpBackwardTrigger="<c-h>"
 let g:UltiSnipsSnippetsDir="~/.vim/snips"
 let g:UltiSnipsSnippetDirectories=["snips"]
 let g:UltiSnipsEditSplit="vertical"
-Plugin 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 
 vmap <up>    <Plug>SchleppUp
 vmap <down>  <Plug>SchleppDown
 vmap <left>  <Plug>SchleppLeft
 vmap <right> <Plug>SchleppRight
 vmap D       <Plug>SchleppDup
-Plugin 'zirrostig/vim-schlepp'
+Plug 'zirrostig/vim-schlepp'
 
 nmap <Leader>t :TagbarToggle<CR>
 let g:tagbar_type_moon = {
@@ -83,10 +81,9 @@ let g:tagbar_type_moon = {
         \ 'p:properties',
     \ ]
 \ }
-Plugin 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'
 
-call vundle#end()
-filetype plugin indent on
+call plug#end()
 
 "                                                                       general
 "                                                         ┏━╸┏━╸┏┓╻┏━╸┏━┓┏━┓╻  
