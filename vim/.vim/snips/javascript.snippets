@@ -1,0 +1,9 @@
+snippet eslint "an eslint line ignore rule"
+// eslint-ignore-${1:same-line} ${2:no-param-reassign}$0
+endsnippet
+
+snippet eslint-block "an eslint block rules"
+/* eslint-disable ${1:no-param-reassign} */
+${VISUAL:$0}
+/* eslint-enable $1 */
+endsnippet

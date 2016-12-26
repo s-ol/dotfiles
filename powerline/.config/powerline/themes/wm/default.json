@@ -27,14 +27,6 @@
             }
           }
         ]
-      },
-      {
-        "function": "powerline.segments.common.players.mpd",
-        "name": "player",
-        "args": {
-          "host": "127.0.0.1",
-          "port": 6600
-        }
       }
     ],
     "right": [
