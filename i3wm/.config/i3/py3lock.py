@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.7
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # vim:ts=2:sw=2:expandtab
 
@@ -27,7 +27,10 @@ def xcb_fetch_windows():
     if attributes.map_state != XCB_MAP_STATE_VIEWABLE:
       continue
 
-    rects += [x.core.GetGeometry(child).reply()]
+    geometry = x.core.GetGeometry(child).reply()
+    if geometry.x < 0 or geometry.y < 0: continue
+
+    rects.append(geometry)
 
   return rects
 
