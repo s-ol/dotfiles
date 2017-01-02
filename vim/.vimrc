@@ -1,6 +1,6 @@
 " map leader to ,
-let mapleader=","
-let maplocalleader="\<Tab>"
+let g:mapleader=','
+let g:maplocalleader="\<Tab>"
 
 "                                                                       plugins
 "                                                           ┏━┓╻  ╻ ╻┏━╸╻┏┓╻┏━┓
@@ -9,28 +9,32 @@ let maplocalleader="\<Tab>"
 set nocompatible
 filetype off
 
-let g:powerline_pycmd = "py3"
+let g:powerline_pycmd = 'py3'
 python3 from powerline.vim import setup as powerline_setup
 python3 powerline_setup()
 python3 del powerline_setup
 
 " load vundle
-set rtp+=~/.vim/bundle/Vundle.vim
+set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+Plugin 'glsl.vim'
 Plugin 'tpope/vim-repeat'
 Plugin 'noahfrederick/vim-noctu'
 Plugin 'tpope/vim-fugitive'
 Plugin 'wellle/targets.vim'
 Plugin 'leafo/moonscript-vim'
 Plugin 'kshenoy/vim-signature'
-Plugin 'davisdude/vim-love-docs'
-Plugin 'w0rp/ale'
+" Plugin 'davisdude/vim-love-docs'
 " Plugin 'vim-scripts/Smart-Tabs'
 
-"nmap <Leader>e :MakeJob<CR>
-nmap <Leader>e :make<CR>
-nmap <Leader>E :cwindow<CR>
+let g:ale_cpp_gcc_options = '-Isrc -std=c++14 -Wall'
+Plugin 'w0rp/ale'
+
+nmap <Leader>e :LmakeJob<CR>
+nmap <Leader>E :MakeJob<CR>
+nmap <Leader>c :lwindow<CR>
+nmap <Leader>C :cwindow<CR>
 Plugin 'djmoch/vim-makejob'
 
 set statusline+=%#warningmsg#
@@ -57,12 +61,12 @@ let g:gitgutter_realtime = 1
 let g:gitgutter_eager = 1
 Plugin 'airblade/vim-gitgutter'
 
-let g:UltiSnipsExpandTrigger="<c-l>"
-let g:UltiSnipsJumpForwardTrigger="<c-l>"
-let g:UltiSnipsJumpBackwardTrigger="<c-h>"
-let g:UltiSnipsSnippetsDir="~/.vim/snips"
-let g:UltiSnipsSnippetDirectories=["snips"]
-let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsExpandTrigger='<c-l>'
+let g:UltiSnipsJumpForwardTrigger='<c-l>'
+let g:UltiSnipsJumpBackwardTrigger='<c-h>'
+let g:UltiSnipsSnippetsDir='~/.vim/snips'
+let g:UltiSnipsSnippetDirectories=['snips']
+let g:UltiSnipsEditSplit='vertical'
 Plugin 'SirVer/ultisnips'
 
 vmap <up>    <Plug>SchleppUp
@@ -98,6 +102,7 @@ syn on            " syntax highlighting
 set hidden        " allow leaving buffers
 
 set scrolloff=8
+set iskeyword=@,48-57,192-255
 
 " fix s:last_* errors
 set shell=/bin/bash
