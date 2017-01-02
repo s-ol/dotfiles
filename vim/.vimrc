@@ -14,28 +14,26 @@ python3 from powerline.vim import setup as powerline_setup
 python3 powerline_setup()
 python3 del powerline_setup
 
-" load vundle
-set runtimepath+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
-Plugin 'glsl.vim'
-Plugin 'tpope/vim-repeat'
-Plugin 'noahfrederick/vim-noctu'
-Plugin 'tpope/vim-fugitive'
-Plugin 'wellle/targets.vim'
-Plugin 'leafo/moonscript-vim'
-Plugin 'kshenoy/vim-signature'
-" Plugin 'davisdude/vim-love-docs'
-" Plugin 'vim-scripts/Smart-Tabs'
+Plug 'glsl.vim'
+Plug 'tpope/vim-repeat'
+Plug 'noahfrederick/vim-noctu'
+Plug 'tpope/vim-fugitive'
+Plug 'wellle/targets.vim'
+Plug 'leafo/moonscript-vim'
+Plug 'kshenoy/vim-signature'
+" Plug 'davisdude/vim-love-docs'
+" Plug 'vim-scripts/Smart-Tabs'
 
 let g:ale_cpp_gcc_options = '-Isrc -std=c++14 -Wall'
-Plugin 'w0rp/ale'
+Plug 'w0rp/ale'
 
 nmap <Leader>e :LmakeJob<CR>
 nmap <Leader>E :MakeJob<CR>
 nmap <Leader>c :lwindow<CR>
 nmap <Leader>C :cwindow<CR>
-Plugin 'djmoch/vim-makejob'
+Plug 'djmoch/vim-makejob'
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -46,20 +44,20 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-" Plugin 'scrooloose/syntastic'
+" Plug 'scrooloose/syntastic'
 
 let g:ycm_server_python_interpreter='/usr/bin/python3'
-"Plugin 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
 
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-Plugin 'unblevable/quick-scope'
+Plug 'unblevable/quick-scope'
 
 let g:tidal_no_mappings = 1
-Plugin 'munshkr/vim-tidal'
+Plug 'munshkr/vim-tidal'
 
 let g:gitgutter_realtime = 1
 let g:gitgutter_eager = 1
-Plugin 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 
 let g:UltiSnipsExpandTrigger='<c-l>'
 let g:UltiSnipsJumpForwardTrigger='<c-l>'
@@ -67,14 +65,14 @@ let g:UltiSnipsJumpBackwardTrigger='<c-h>'
 let g:UltiSnipsSnippetsDir='~/.vim/snips'
 let g:UltiSnipsSnippetDirectories=['snips']
 let g:UltiSnipsEditSplit='vertical'
-Plugin 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 
 vmap <up>    <Plug>SchleppUp
 vmap <down>  <Plug>SchleppDown
 vmap <left>  <Plug>SchleppLeft
 vmap <right> <Plug>SchleppRight
 vmap D       <Plug>SchleppDup
-Plugin 'zirrostig/vim-schlepp'
+Plug 'zirrostig/vim-schlepp'
 
 nmap <Leader>t :TagbarToggle<CR>
 let g:tagbar_type_moon = {
@@ -88,10 +86,9 @@ let g:tagbar_type_moon = {
         \ 'p:properties',
     \ ]
 \ }
-Plugin 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'
 
-call vundle#end()
-filetype plugin indent on
+call plug#end()
 
 "                                                                       general
 "                                                         ┏━╸┏━╸┏┓╻┏━╸┏━┓┏━┓╻  
@@ -122,6 +119,7 @@ set expandtab
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
+set backspace=indent,eol,start
 
 "                                                                        visual
 "                                                              ╻ ╻╻┏━┓╻ ╻┏━┓╻  
@@ -172,16 +170,14 @@ nnoremap <silent> <DEL> :nohl<CR>
 nnoremap <silent> <Leader><Space> :!<CR>
 
 " switch buffers quickly
-nnoremap <Leader><Tab> :bn<CR>
-nnoremap <Leader><S-Tab> :bp<CR>
+nnoremap <Leader><Tab> :b#<CR>
+nnoremap <Leader><S-Tab> :ls<CR>:b<space>
 nnoremap <Leader>q :b#\|bd#<CR>
+nnoremap <C-N> :bnext<CR>
+nnoremap <C-P> :bprev<CR>
 
 " toggle paste
 nnoremap <silent> <Leader>p :set paste!<CR>
-
-" quicker buffer switching
-nnoremap <C-N> :bnext<CR>
-nnoremap <C-P> :bprev<CR>
 
 " move down wrapped lines
 noremap <expr> j (v:count? 'j' : 'gj')

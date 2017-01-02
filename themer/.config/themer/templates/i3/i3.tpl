@@ -85,7 +85,8 @@ bindsym $mod+Shift+d exec --no-startup-id gksudo $(dmenu -p "Sudo:" $(~/.config/
 
 bindsym $mod+Shift+t   exec --no-startup-id i3-msg mark "$(dmenu -noinput -p "Mark:" $(~/.config/i3/dmenuconf))"
 bindsym $mod+Control+t exec --no-startup-id i3-msg unmark "$(i3-msg -t get_marks | jq -r .[] | dmenu -p "Unmark:" $(~/.config/i3/dmenuconf))"
-bindsym $mod+t         exec --no-startup-id i3-msg [con_mark=\"$(i3-msg -t get_marks | jq -r .[] | dmenu -p "Goto:" $(~/.config/i3/dmenuconf))\"] focus
+#bindsym $mod+t         exec --no-startup-id i3-msg [con_mark=\"$(i3-msg -t get_marks | jq -r .[] | dmenu -p "Goto:" $(~/.config/i3/dmenuconf))\"] focus
+bindsym $mod+t         exec --no-startup-id i3-msg [con_mark=\"$(i3-msg -t get_marks | jq -r .[] | dmenu -p "Goto:" $(~/.config/i3/dmenuconf))\"] scratchpad show
 
 bindsym $mod+u sticky toggle
 
@@ -195,6 +196,7 @@ assign [class="FrozenSynapse"] $ws6
 assign [instance="Hearthstone.exe"] $ws6
 
 for_window [class="Steam" title="Chat$"] floating enable
+for_window [title="^lava$"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [instance="float"] floating enable
@@ -205,15 +207,15 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 bindsym $mod+Control+e exec ~/.config/i3/py3lock.py
 
 mode "resize" {
-  bindsym j resize grow down  10 px or 5 ppt
-  bindsym k resize grow up    10 px or 5 ppt
+  bindsym j resize grow down 10 px or 5 ppt
   bindsym l resize grow right 10 px or 5 ppt
-  bindsym h resize grow left  10 px or 5 ppt
+  bindsym h resize shrink right 10 px or 5 ppt
+  bindsym k resize shrink down 10 px or 5 ppt
 
-  bindsym Shift+j resize shrink up    10 px or 5 ppt
-  bindsym Shift+k resize shrink down  10 px or 5 ppt
-  bindsym Shift+l resize shrink left  10 px or 5 ppt
-  bindsym Shift+h resize shrink right 10 px or 5 ppt
+  bindsym Shift+k resize grow up 10 px or 5 ppt
+  bindsym Shift+h resize grow left 10 px or 5 ppt
+  bindsym Shift+l resize shrink left 10 px or 5 ppt
+  bindsym Shift+j resize shrink up 10 px or 5 ppt
 
   bindsym Left resize shrink width 10 px or 5 ppt
   bindsym Down resize grow height  10 px or 5 ppt

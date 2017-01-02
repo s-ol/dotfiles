@@ -47,14 +47,17 @@ function tunzip -d "unzip in a temporary directory"
   cd $dir
 end
 
-function wallvid -d "loop a video as wallpaper"
+function wallvid -d "loop a video as wallpaper" -w "mplayer"
   xwinwrap -ov -fs -- mplayer -nogui -nomouseinput -nosound -loop 0 -wid WID $argv
 end
 
+function timesum -d "sum time in format HHhMM"
+  command awk -Fh '{ s+= ($1 * 60) + $2 } END {print s/60 "h"}'
+end
 
-function noblank -d "disable X blanking"; command xset s off -dpms; end
-
-function timesum -d "sum time in format HHhMM"; command awk -Fh '{ s+= ($1 * 60) + $2 } END {print s/60 "h"}'; end
+function vulkan_dbg -d "set vulkan debugging layers"
+  command env VK_INSTANCE_LAYERS=VK_LAYER_LUNARG_standard_validation VK_DEVICE_LAYERS=VK_LAYER_LUNARG_standard_validation $argv
+end
 
 function -e fish_preexec _run_fasd
   fasd --proc (echo $argv | tr -s ' ' \n)
@@ -69,14 +72,7 @@ function j
   cd $dir
 end
 
-function e
-  fasd -fe vim "$argv"
-end
-
-function ve
-  vim --remote-silent $argv
-end
-
-function ves
-  vim --servername $argv[1] --remote-silent $argv[2..1-1]
-end
+function e; fasd -fe vim "$argv"; end
+function ve -w "vim"; vim --remote-silent $argv; end
+function ves -w "vim"; vim --servername $argv[1] --remote-silent $argv[2..1-1]; end
+function noblank -d "disable X blanking"; command xset s off -dpms; end
