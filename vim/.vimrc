@@ -22,9 +22,11 @@ Plug 'noahfrederick/vim-noctu'
 Plug 'tpope/vim-fugitive'
 Plug 'wellle/targets.vim'
 Plug 'leafo/moonscript-vim'
+Plug 'urbit/hoon.vim'
 Plug 'kshenoy/vim-signature'
-" Plug 'davisdude/vim-love-docs'
-" Plug 'vim-scripts/Smart-Tabs'
+Plug 'seletskiy/vim-refugi'
+Plug 'davisdude/vim-love-docs'
+Plug 'vim-scripts/Smart-Tabs'
 
 let g:ale_cpp_gcc_options = '-Isrc -std=c++14 -Wall'
 Plug 'w0rp/ale'
@@ -87,6 +89,22 @@ let g:tagbar_type_moon = {
     \ ]
 \ }
 Plug 'majutsushi/tagbar'
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+" nmap <Leader>r :NERDTreeToggle<CR>
+" Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-vinegar'
+
+
+fun! VexOpen()
+  execute "Vexplore"
+  redraw!
+endf
+nmap <Leader>r :call VexOpen()<CR>
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_winsize = 30
 
 call plug#end()
 
