@@ -9,26 +9,26 @@ let g:maplocalleader="\<Tab>"
 set nocompatible
 filetype off
 
-let g:powerline_pycmd = 'py3'
-python3 from powerline.vim import setup as powerline_setup
-python3 powerline_setup()
-python3 del powerline_setup
+if has('python3')
+  let g:powerline_pycmd = 'py3'
+  python3 from powerline.vim import setup as powerline_setup
+  python3 powerline_setup()
+  python3 del powerline_setup
+endif
 
 call plug#begin('~/.vim/plugged')
 
 Plug 'glsl.vim'
 Plug 'tpope/vim-repeat'
-Plug 'noahfrederick/vim-noctu'
 Plug 'tpope/vim-fugitive'
 Plug 'wellle/targets.vim'
 Plug 'leafo/moonscript-vim'
-Plug 'urbit/hoon.vim'
 Plug 'kshenoy/vim-signature'
 Plug 'seletskiy/vim-refugi'
-Plug 'davisdude/vim-love-docs'
-Plug 'vim-scripts/Smart-Tabs'
 
 let g:ale_cpp_gcc_options = '-Isrc -std=c++14 -Wall'
+let g:ale_javascript_eslint_use_global = 1
+let g:ale_javascript_flow_use_global = 1
 Plug 'w0rp/ale'
 
 nmap <Leader>e :LmakeJob<CR>
@@ -95,16 +95,17 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 " nmap <Leader>r :NERDTreeToggle<CR>
 " Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-vinegar'
+augroup netrw_buf_hidden_fix
+    autocmd!
+
+    " Set all non-netrw buffers to bufhidden=hide
+    autocmd BufWinEnter *
+                \  if &ft != 'netrw'
+                \|     set bufhidden=hide
+                \| endif
+augroup end
 
 
-fun! VexOpen()
-  execute "Vexplore"
-  redraw!
-endf
-nmap <Leader>r :call VexOpen()<CR>
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_winsize = 30
 
 call plug#end()
 
@@ -114,7 +115,6 @@ call plug#end()
 "                                                         ┗━┛┗━╸╹ ╹┗━╸╹┗╸╹ ╹┗━╸
 
 syn on            " syntax highlighting
-set hidden        " allow leaving buffers
 
 set scrolloff=8
 set iskeyword=@,48-57,192-255
@@ -167,7 +167,7 @@ set splitright
 
 " show 80th col
 highlight ColorColumn ctermbg=magenta
-call matchadd('ColorColumn', '\%81v', 100)
+call matchadd('ColorColumn', '\%121v', 100)
 
 augroup quickfix
 au!
@@ -191,8 +191,8 @@ nnoremap <silent> <Leader><Space> :!<CR>
 nnoremap <Leader><Tab> :b#<CR>
 nnoremap <Leader><S-Tab> :ls<CR>:b<space>
 nnoremap <Leader>q :b#\|bd#<CR>
-nnoremap <C-N> :bnext<CR>
-nnoremap <C-P> :bprev<CR>
+nnoremap ]q :bnext<CR>
+nnoremap [q :bprev<CR>
 
 " toggle paste
 nnoremap <silent> <Leader>p :set paste!<CR>
