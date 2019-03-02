@@ -18,19 +18,42 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+" Language support
 Plug 'glsl.vim'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-fugitive'
-Plug 'wellle/targets.vim'
 Plug 'leafo/moonscript-vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'bhurlow/vim-parinfer'
+
+
+" Core extensions
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+Plug 'unblevable/quick-scope'
+Plug 'tpope/vim-repeat'
+Plug 'wellle/targets.vim'
+
+
+" Sign-column stuff
+let g:gitgutter_realtime = 1
+let g:gitgutter_eager = 1
+Plug 'airblade/vim-gitgutter'
 Plug 'kshenoy/vim-signature'
 Plug 'seletskiy/vim-refugi'
 Plug 'noahfrederick/vim-noctu'
 
+
+" Integrations
 let g:ale_cpp_gcc_options = '-Isrc -std=c++14 -Wall'
-let g:ale_javascript_eslint_use_global = 1
-let g:ale_javascript_flow_use_global = 1
+" let g:ale_javascript_eslint_use_global = 1
+" let g:ale_javascript_flow_use_global = 1
+let g:ale_linters = {
+\   'javascript': ['eslint', 'flow'],
+\   'typescript': ['eslint', 'tsserver'],
+\ }
+let g:ale_fixers = ['eslint']
+nmap <silent> [f <Plug>(ale_previous_wrap)
+nmap <silent> ]f <Plug>(ale_next_wrap)
 Plug 'w0rp/ale'
+Plug 'tpope/vim-fugitive'
 
 nmap <Leader>e :LmakeJob<CR>
 nmap <Leader>E :MakeJob<CR>
@@ -49,18 +72,20 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 " Plug 'scrooloose/syntastic'
 
-let g:ycm_server_python_interpreter='/usr/bin/python3'
-"Plug 'Valloric/YouCompleteMe'
+" let g:ycm_server_python_interpreter='/usr/bin/python3'
+" Plug 'Valloric/YouCompleteMe'
 
-let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-Plug 'unblevable/quick-scope'
+" let g:deoplete#enable_at_startup = 1
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 
 let g:tidal_no_mappings = 1
 Plug 'munshkr/vim-tidal'
-
-let g:gitgutter_realtime = 1
-let g:gitgutter_eager = 1
-Plug 'airblade/vim-gitgutter'
 
 let g:UltiSnipsExpandTrigger='<c-l>'
 let g:UltiSnipsJumpForwardTrigger='<c-l>'
@@ -91,17 +116,20 @@ let g:tagbar_type_moon = {
 \ }
 Plug 'majutsushi/tagbar'
 
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+
 " nmap <Leader>r :NERDTreeToggle<CR>
 " Plug 'scrooloose/nerdtree'
+
 Plug 'tpope/vim-vinegar'
 augroup netrw_buf_hidden_fix
     autocmd!
 
     " Set all non-netrw buffers to bufhidden=hide
     autocmd BufWinEnter *
-                \  if &ft != 'netrw'
+                \  if &ft == 'qfix'
+                \|     set nobuflisted
+                \| endif
+                \| if &ft != 'netrw'
                 \|     set bufhidden=hide
                 \| endif
 augroup end
@@ -192,6 +220,7 @@ nnoremap <silent> <Leader><Space> :!<CR>
 nnoremap <Leader><Tab> :b#<CR>
 nnoremap <Leader><S-Tab> :ls<CR>:b<space>
 nnoremap <Leader>q :b#\|bd#<CR>
+nnoremap <Leader>l :lop<CR>
 nnoremap ]q :bnext<CR>
 nnoremap [q :bprev<CR>
 
