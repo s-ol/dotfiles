@@ -25,6 +25,7 @@ Plug 'wellle/targets.vim'
 Plug 'leafo/moonscript-vim'
 Plug 'kshenoy/vim-signature'
 Plug 'seletskiy/vim-refugi'
+Plug 'noahfrederick/vim-noctu'
 
 let g:ale_cpp_gcc_options = '-Isrc -std=c++14 -Wall'
 let g:ale_javascript_eslint_use_global = 1
@@ -165,7 +166,7 @@ set hlsearch incsearch
 set splitbelow
 set splitright
 
-" show 80th col
+" show 120th col
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%121v', 100)
 

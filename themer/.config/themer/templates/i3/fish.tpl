@@ -1,4 +1,3 @@
-powerline-daemon -q
 set -gx POWERLINE /usr/lib/python3.5/site-packages/powerline/
 set fish_function_path $fish_function_path $POWERLINE"bindings/fish"
 powerline-setup
