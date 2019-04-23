@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/home/s-ol'
+let g:netrw_dirhist_2='/home/s-ol/gpWFC'
+let g:netrw_dirhist_3='/home/s-ol/gpWFC/__pycache__'
+let g:netrw_dirhist_4='/home/s-ol/gpWFC'
+let g:netrw_dirhist_5='/home/s-ol/Documents/osc/VJmidiKit/src'
+let g:netrw_dirhist_6='/home/s-ol/Documents/osc/VJmidiKit/bin/data/shaders'
+let g:netrw_dirhist_7='/home/s-ol/Documents/osc/VJmidiKit/src'
+let g:netrw_dirhist_8='/home/s-ol/Documents/osc/VJmidiKit/bin/data/shaders'
