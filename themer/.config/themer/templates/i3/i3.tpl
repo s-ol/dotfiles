@@ -82,6 +82,7 @@ bindsym $mod+m exec urxvtc -name float -geometry 200x45 -e ncmpcpp
 bindsym $mod+o exec urxvtc -name float -geometry 200x45 -depth 0 -e ranger
 bindsym $mod+d exec --no-startup-id dmenu_run -p "Launch:" $(~/.config/i3/dmenuconf)
 bindsym $mod+Shift+d exec --no-startup-id gksudo $(dmenu -p "Sudo:" $(~/.config/i3/dmenuconf))
+bindsym $mod+i exec --no-startup-id keepmenu
 
 bindsym $mod+Shift+t   exec --no-startup-id i3-msg mark "$(dmenu -noinput -p "Mark:" $(~/.config/i3/dmenuconf))"
 bindsym $mod+Control+t exec --no-startup-id i3-msg unmark "$(i3-msg -t get_marks | jq -r .[] | dmenu -p "Unmark:" $(~/.config/i3/dmenuconf))"
@@ -90,9 +91,9 @@ bindsym $mod+t         exec --no-startup-id i3-msg [con_mark=\"$(i3-msg -t get_m
 
 bindsym $mod+u sticky toggle
 
-bindsym Print exec --no-startup-id scrot
-bindsym $mod+Print exec --no-startup-id scrot -d 2
-bindsym Shift+Print exec --no-startup-id scrot -s
+bindsym Print exec --no-startup-id maim ~/maim-$(date +%F_%T).png
+bindsym Shift+Print exec --no-startup-id maim -sun ~/maim-$(date +%F_%T).png
+bindsym $mod+Print exec --no-startup-id maim -sun | xclip -selection clipboard -t image/png
 
 bindsym $mod+h focus left
 bindsym $mod+l focus right

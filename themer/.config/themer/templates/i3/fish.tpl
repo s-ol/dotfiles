@@ -1,6 +1,5 @@
-powerline-daemon -q
-set -gx POWERLINE /usr/lib/python3.5/site-packages/powerline/
-set fish_function_path $fish_function_path $POWERLINE"bindings/fish"
+set -gx POWERLINE (dirname (python -c 'import powerline; print(powerline.__file__)'))
+set fish_function_path $fish_function_path $POWERLINE"/bindings/fish"
 powerline-setup
 
 #thefuck --alias | .
