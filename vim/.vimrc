@@ -40,7 +40,6 @@ Plug 'kshenoy/vim-signature'
 Plug 'seletskiy/vim-refugi'
 Plug 'noahfrederick/vim-noctu'
 
-
 " Integrations
 let g:ale_cpp_gcc_options = '-Isrc -std=c++14 -Wall'
 " let g:ale_javascript_eslint_use_global = 1
@@ -59,7 +58,7 @@ nmap <Leader>e :LmakeJob<CR>
 nmap <Leader>E :MakeJob<CR>
 nmap <Leader>c :lwindow<CR>
 nmap <Leader>C :cwindow<CR>
-Plug 'djmoch/vim-makejob'
+"Plug 'djmoch/vim-makejob'
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -189,6 +188,7 @@ set shortmess+=I        " no startup msg
 set number
 set relativenumber
 set hlsearch incsearch
+set clipboard=exclude:cons\|linux
 
 " put split windows right or below of current one
 set splitbelow
