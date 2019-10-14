@@ -16,7 +16,7 @@ URxvt*.scrollBar_floating: true
 URxvt*.scrollBar_right: true
 URxvt*.internalBorder:
 
-URxvt*.perl-ext-common:  default,custom_url,selection-to-clipboard,reload-colors
+URxvt*.perl-ext-common:  default,custom_url,selection-to-clipboard,reload-colors,-searchable-scrollback
 
 URxvt*.keysym.M-x: perl:reload-colors
 
