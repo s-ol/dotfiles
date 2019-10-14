@@ -1,0 +1,19 @@
+source "%val{config}/plugins/plug.kak/rc/plug.kak"
+
+colorscheme desertex
+
+plug "andreyorst/smarttab.kak" defer smarttab %{
+  set-option global softtabstop 2
+  set-option global tabstop 2
+  set-option global indentwidth 2
+} config %{
+  hook global WinSetOption .* expandtab
+}
+
+eval %sh{kak-lsp --kakoune -s $kak_session}
+hook global WinSetOption filetype=(python|javascript|c|cpp) %{
+  lsp-enable-window
+  lsp-auto-hover-enable
+}
+
+add-highlighter global/ number-lines

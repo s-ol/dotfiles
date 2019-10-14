@@ -23,5 +23,8 @@ vim/.vim/.netrwhist
 vim/.vim/plugged
 vim/.vim/colors
 
+# kakoune
+kakoune/.config/kak/plugins
+
 *__pycache__*
 .DS_Store
