@@ -1,7 +1,7 @@
 URxvt*.faceName: {{ fontName.title() }}
 URxvt*.faceSize: {{ fontSize }}
 URxvt*.font: xft:{{ fontName.title() }}:pixelsize={{ fontSize }}
-URxvt*.letterSpace: -2
+URxvt*.letterSpace: 0
 
 URxvt*.clipboard.copycmd:  xsel -ib
 URxvt*.clipboard.pastecmd: xsel -ob

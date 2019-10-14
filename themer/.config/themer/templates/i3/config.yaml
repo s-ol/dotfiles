@@ -4,8 +4,7 @@ variables:
   tertiary: red
   special: yellow
   # transparency: 50
-  # fontName: Source Code Pro for Powerline
-  fontName: Sauce Code Powerline for Powerline
+  fontName: Source Code Pro for Powerline
   fontSize: 10
   font: "-*-terminus-*-*-*-*-12-*-*-*-*-*-*-*"
 plugins:

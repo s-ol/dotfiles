@@ -7,7 +7,7 @@ let g:maplocalleader="\<Tab>"
 "                                                           ┣━┛┃  ┃ ┃┃╺┓┃┃┗┫┗━┓
 "                                                           ╹  ┗━╸┗━┛┗━┛╹╹ ╹┗━┛
 set nocompatible
-filetype off
+filetype on
 
 if has('python3')
   let g:powerline_pycmd = 'py3'
@@ -23,6 +23,7 @@ Plug 'glsl.vim'
 Plug 'leafo/moonscript-vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'bhurlow/vim-parinfer'
+Plug 's-ol/scopes.vim'
 
 
 " Core extensions

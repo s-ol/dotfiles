@@ -5,7 +5,7 @@ powerline-setup
 #thefuck --alias | .
 
 #set -gx TERM xterm-256color
-set -gx EDITOR vim
+set -gx EDITOR kak
 set -gx PAGER less
 #set -gx PATH ~/.bin $PATH
 
@@ -32,7 +32,7 @@ function fish_greeting
   end
 end
 
-# function vim; command vim -p $argv; end
+function vim; command kak $argv; end
 function git; command hub $argv; end
 function more; command less $argv; end
 function toilet; command toilet -tffuture --metal $argv; end
@@ -58,7 +58,7 @@ function vulkan_dbg -d "set vulkan debugging layers"
   command env VK_INSTANCE_LAYERS=VK_LAYER_LUNARG_standard_validation VK_DEVICE_LAYERS=VK_LAYER_LUNARG_standard_validation $argv
 end
 
-function -e fish_preexec _run_fasd
+function _run_fasd -e fish_preexec
   fasd --proc (echo $argv | tr -s ' ' \n)
 end
 
@@ -71,7 +71,5 @@ function j
   cd $dir
 end
 
-function e; fasd -fe vim "$argv"; end
-function ve -w "vim"; vim --remote-silent $argv; end
-function ves -w "vim"; vim --servername $argv[1] --remote-silent $argv[2..1-1]; end
+function e; fasd -fe kak "$argv"; end
 function noblank -d "disable X blanking"; command xset s off -dpms; end
