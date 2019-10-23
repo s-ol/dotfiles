@@ -2,6 +2,9 @@ dotfiles.git
 ============
 
 These are my configuration files for my arch setup.
-I use [themer](/S0lll0s/themer) to manage my themes, you will need to use `themer render all` and `themer activate [sometheme]` to get the configs in the right place.
+I use [themer](/s-ol/themer) to manage my themes, you will need to use `themer render all` and `themer activate [sometheme]` to get the configs in the right place.
 
-This repo is intended to be placed at `~`, though I recommend you just clone it somewhere and copy what you like to `~`.
+Each folder in this repository is meant 
+Most of the sub-configurations in directories in this repo are meant to be put at `"`, and you can symlink them there using `stow`:
+
+    $ stow -t [dirname]
