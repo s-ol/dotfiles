@@ -2,10 +2,10 @@ source "%val{config}/plugins/plug.kak/rc/plug.kak"
 
 colorscheme desertex
 
-plug "andreyorst/smarttab.kak" defer smarttab %{
+set-option global tabstop 2
+set-option global indentwidth 2
+plug 'andreyorst/smarttab.kak' defer smarttab %{
   set-option global softtabstop 2
-  set-option global tabstop 2
-  set-option global indentwidth 2
 } config %{
   hook global WinSetOption .* expandtab
 }
@@ -32,3 +32,5 @@ plug "Delapouite/kakoune-buffers" config %(
   map global normal b ':enter-buffers-mode<ret>'              -docstring 'buffers…'
   map global normal B ':enter-user-mode -lock buffers<ret>'   -docstring 'buffers (lock)…'
 )
+
+plug 's-ol/zig.kak'
