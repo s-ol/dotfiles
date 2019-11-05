@@ -33,4 +33,4 @@ plug "Delapouite/kakoune-buffers" config %(
   map global normal B ':enter-user-mode -lock buffers<ret>'   -docstring 'buffers (lock)…'
 )
 
-plug 's-ol/zig.kak'
+plug "s-ol/zig.kak"

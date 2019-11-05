@@ -26,5 +26,8 @@ vim/.vim/colors
 # kakoune
 kakoune/.config/kak/plugins
 
+# aerc
+aerc/.config/aerc/accounts.conf
+
 *__pycache__*
 .DS_Store

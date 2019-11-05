@@ -11,7 +11,7 @@ black: '#200f09'
 blue: '#9a9ca0'
 cyan: '#a27e48'
 font: -*-terminus-*-*-*-*-12-*-*-*-*-*-*-*
-fontName: Sauce Code Powerlinefor Powerline
+fontName: Source Code Pro for Powerline
 fontSize: 10
 foreground: '#ffffff'
 green: '#a02112'
