@@ -1,0 +1,2 @@
+#!/bin/sh
+exec dmenu $(~/.config/i3/dmenuconf) "$@"
