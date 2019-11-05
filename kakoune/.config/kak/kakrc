@@ -28,9 +28,21 @@ map global normal Q B
 map global normal <a-q> <a-b>
 map global normal <a-Q> <a-B>
 
+# user mode (,)
+map global user m ':make<ret>'
+
 plug "Delapouite/kakoune-buffers" config %(
   map global normal b ':enter-buffers-mode<ret>'              -docstring 'buffers…'
   map global normal B ':enter-user-mode -lock buffers<ret>'   -docstring 'buffers (lock)…'
 )
 
 plug "s-ol/zig.kak"
+
+def ide %{
+  rename-client main
+  set global jumpclient main
+
+  new rename-client tools_docs
+  set global toolsclient tools_docs
+  set global docsclient tools_docs
+}

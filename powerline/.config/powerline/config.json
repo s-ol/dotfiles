@@ -13,10 +13,12 @@
     },
     "tmux": {
       "colorscheme": "default",
+      "top_theme": "ascii",
       "theme": "default"
     },
     "vim": {
       "colorscheme": "default",
+      "top_theme": "ascii",
       "theme": "default",
       "local_themes": {
         "__tabline__": "tabline",
@@ -35,6 +37,7 @@
       ]
     },
     "wm": {
+      "top_theme": "ascii",
       "colorscheme": "default",
       "theme": "default",
       "local_themes": {

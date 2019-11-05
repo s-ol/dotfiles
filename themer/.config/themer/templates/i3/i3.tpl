@@ -92,7 +92,7 @@ bindsym $mod+t         exec --no-startup-id i3-msg [con_mark=\"$(i3-msg -t get_m
 bindsym $mod+u sticky toggle
 
 bindsym Print exec --no-startup-id maim ~/maim-$(date +%F_%T).png
-bindsym Shift+Print exec --no-startup-id maim -sun ~/maim-$(date +%F_%T).png
+bindsym Shift+Print exec --no-startup-id maim -sun > ~/maim-$(date +%F_%T).png
 bindsym $mod+Print exec --no-startup-id maim -sun | xclip -selection clipboard -t image/png
 
 bindsym $mod+h focus left
