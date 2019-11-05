@@ -1,0 +1,14 @@
+[Unit]
+Description=Mount perosnal WebDAV
+After=network-online.target
+Wants=network-online.target
+
+[Mount]
+What=https://dav.s-ol.nu/s-ol
+Where=/mnt/dav
+Options=noauto,user,uid=s-ol,gid=s-ol
+Type=davfs
+TimeoutSec=60
+
+[Install]
+WantedBy=remote-fs.target
