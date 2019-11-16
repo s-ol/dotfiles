@@ -4,10 +4,9 @@ powerline-setup
 
 #thefuck --alias | .
 
-#set -gx TERM xterm-256color
 set -gx EDITOR kak
 set -gx PAGER less
-#set -gx PATH ~/.bin $PATH
+set -x PATH $PATH /home/s-ol/.cargo/bin
 
 set fish_color_autosuggestion "{{ alt_blue }}"
 set fish_color_comment        "{{ alt_green }}"
