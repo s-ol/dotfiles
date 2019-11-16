@@ -19,15 +19,6 @@ set $ws8  "8: music"
 set $ws9  "9: media"
 set $ws10 "10:10"
 
-workspace $ws1 output HDMI1
-workspace $ws2 output HDMI1
-workspace $ws3 output HDMI1
-workspace $ws6 output HDMI1
-workspace $ws4 output DVI-I-1
-workspace $ws5 output DVI-I-1
-workspace $ws8 output LVDS1
-workspace $ws9 output LVDS1
-
 focus_follows_mouse yes
 
 set     $gaps_inner 30
