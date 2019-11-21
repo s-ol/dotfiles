@@ -1,0 +1,14 @@
+[Unit]
+Description=PulseAudio & Jack connection
+After=jack2.service
+After=pulseaudio.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/jack_connect pulse-sink:front-left system:playback_1
+ExecStart=/usr/bin/jack_connect pulse-sink:front-right system:playback_2
+ExecStart=/usr/bin/jack_connect system:capture_1 pulse-source:front-left
+ExecStart=/usr/bin/jack_connect system:capture_2 pulse-source:front-right
+
+[Install]
+WantedBy=pulseaudio.service

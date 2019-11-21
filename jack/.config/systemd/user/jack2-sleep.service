@@ -1,0 +1,13 @@
+[Unit]
+Description=JACK2 sleep hook
+Before=sleep.target
+StopWhenUnneeded=yes
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=-/usr/bin/systemctl --user stop jack2.service
+ExecStop=-/usr/bin/systemctl --user start jack2.service
+
+[Install]
+WantedBy=sleep.target

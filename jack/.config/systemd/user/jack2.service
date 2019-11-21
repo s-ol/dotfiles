@@ -1,0 +1,9 @@
+[Unit]
+Description=Jack 2 DBUS
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/jackd -d alsa -d hw:DSX,0 -o 2 -X raw -r 96000
+
+[Install]
+WantedBy=pulseaudio.service
