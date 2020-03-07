@@ -10,10 +10,10 @@ plug 'andreyorst/smarttab.kak' defer smarttab %{
   hook global WinSetOption .* expandtab
 }
 
-eval %sh{kak-lsp --kakoune -s $kak_session}
-hook global WinSetOption filetype=(python|javascript|c|cpp) %{
-  lsp-enable-window
-  lsp-auto-hover-enable
+# eval %sh{kak-lsp --kakoune -s $kak_session}
+hook global WinSetOption filetype=(python|c|cpp) %{
+  # lsp-enable-window
+  # lsp-auto-hover-enable
 }
 
 add-highlighter global/ number-lines
@@ -54,4 +54,16 @@ def ide %{
   new rename-client tools_docs
   set global toolsclient tools_docs
   set global docsclient tools_docs
+}
+
+def presentation %{
+  set global autoinfo ''
+  set global autocomplete ''
+  addhl global/ wrap -word -indent
+}
+
+plug 'alive.kak'
+
+hook global ModuleLoaded x11 %{
+  set-option global termcmd "urxvtc -e sh -c"
 }
