@@ -21,18 +21,10 @@ set $ws10 "10:10"
 
 focus_follows_mouse yes
 
-set     $gaps_inner 30
-set     $gaps_outer 40
+set     $gaps_inner 0
+set     $gaps_outer 0
 set $alt_gaps_inner 20
 set $alt_gaps_outer 0
-
-gaps inner $gaps_inner
-gaps outer $gaps_outer
-
-workspace $ws8 gaps outer $alt_gaps_outer
-workspace $ws9 gaps outer $alt_gaps_outer
-workspace $ws8 gaps inner $alt_gaps_inner
-workspace $ws9 gaps inner $alt_gaps_inner
 
 mode "gaps" {
   bindsym plus gaps inner current plus 5
@@ -67,7 +59,7 @@ floating_modifier $mod
 bindsym $mod+Shift+q kill
 
 bindsym $mod+Return exec urxvtc
-bindsym $mod+Shift+Return exec urxvtc -name float -geometry 200x45
+bindsym $mod+Shift+Return exec urxvtc -name float -geometry 100x30
 bindsym $mod+p exec chromium
 bindsym $mod+m exec urxvtc -name float -geometry 200x45 -e ncmpcpp
 bindsym $mod+o exec urxvtc -name float -geometry 200x45 -depth 0 -e ranger

@@ -3,6 +3,7 @@ set fish_function_path $fish_function_path $POWERLINE"/bindings/fish"
 powerline-setup
 
 #thefuck --alias | .
+#set -gx TERM xterm
 
 set -gx EDITOR kak
 set -gx PAGER less
@@ -57,9 +58,9 @@ function vulkan_dbg -d "set vulkan debugging layers"
   command env VK_INSTANCE_LAYERS=VK_LAYER_LUNARG_standard_validation VK_DEVICE_LAYERS=VK_LAYER_LUNARG_standard_validation $argv
 end
 
-function _run_fasd -e fish_preexec
-  fasd --proc (echo $argv | tr -s ' ' \n)
-end
+# function _run_fasd -e fish_preexec
+#   fasd --proc (echo $argv | tr -s ' ' \n)
+# end
 
 function j
   set -l dir (fasd -de "printf %s" "$argv")

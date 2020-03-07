@@ -5,7 +5,7 @@ variables:
   special: yellow
   # transparency: 50
   fontName: Source Code Pro for Powerline
-  fontSize: 10
+  fontSize: 14
   font: "-*-terminus-*-*-*-*-12-*-*-*-*-*-*-*"
 plugins:
   parsers:

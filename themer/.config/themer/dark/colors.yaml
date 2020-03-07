@@ -12,7 +12,7 @@ blue: '#66aabb'
 cyan: '#6d878d'
 font: -*-terminus-*-*-*-*-12-*-*-*-*-*-*-*
 fontName: Source Code Pro for Powerline
-fontSize: 10
+fontSize: 14
 foreground: '#ffffff'
 green: '#b7ce42'
 magenta: '#b7416e'
